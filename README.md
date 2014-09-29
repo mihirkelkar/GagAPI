@@ -1,3 +1,3 @@
 Unofficial 9GAG Top Ten API
 ================
-Get top ten post info from any category in 9gag like hot, trending, meme, food etc...
+Functionalities are as follows:
