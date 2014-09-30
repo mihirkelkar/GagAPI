@@ -6,6 +6,21 @@ from BeautifulSoup import BeautifulSoup as bs
 
 BASE_URL = "https://9gag.com"
 
+PAGE_DICT = {
+  'hot' : '/hot',
+  'trending' : '/trending',
+  'fresh' : '/fresh',
+  'nsfw' : '/nsfw',
+  'cute' : '/cute',
+  'geeky': '/geeky',
+  'meme' : '/meme',
+  'cute' : '/cosplay',
+  'comic': '/comic',
+  'cosplay': '/cosplay',
+  'timely': '/timely',
+  'wtf' : '/wtf',
+  'girl': '/girl' 
+  }
 def get_page(page_url = ""):
   try:
     #Solved the inifnite scrolling problem.
@@ -14,8 +29,14 @@ def get_page(page_url = ""):
   except:
     return None
 
-def retrieve_articles(number_of_pages = 1):
+def retrieve_articles(number_of_pages, page_type):
   extend_url = ""
+  if page_type != None:
+    try:
+      extend_url = PAGE_DICT[page_type]
+    except:
+      extenf_url = ""
+  print extend_url
   all_articles = list()
   while number_of_pages > 0:
     content = get_page(extend_url)
@@ -32,9 +53,9 @@ def retrieve_articles(number_of_pages = 1):
 #they want only gifs, images, posts with comments above this number,#posts with comments greater than 
 #Make sure that the page number limit is 100. 
  
-def annotate(number_of_pages):
+def annotate(number_of_pages, page_type):
   final_result = list()
-  for ii in retrieve_articles(number_of_pages):
+  for ii in retrieve_articles(number_of_pages, page_type):
     #TODO : Make the dictionary by getting other elements out. 
     try:
       type = ii.find('span', attrs = {'class' : 'play badge-gif-play hide'}).text
@@ -58,7 +79,7 @@ def annotate(number_of_pages):
   return final_result
 
 def get_posts_from_page(number_of_pages = 1, media_type = 'all', page_type = None, more_votes_than = 0, more_comments_than = 0):
-  data = annotate(number_of_pages)
+  data = annotate(number_of_pages, page_type)
   if media_type == 'gif':
     data = [el for el in data if el['type'] == 'GIF']
   elif media_type == 'image':
@@ -69,11 +90,10 @@ def get_posts_from_page(number_of_pages = 1, media_type = 'all', page_type = Non
     data = [el for el in data if el['votes'] > more_votes_than]
   if more_comments_than > 0:
     data = [el for el in data if el['comments'] > more_comments_than]
-  return data
+  return json.dumps(data)
 
 def main():
-  for ii in get_posts_from_page(number_of_pages = 4, more_votes_than = 10000, more_comments_than  = 200):
-    print ii
-    print "========="  
+  print get_posts_from_page(media_type = 'gif')
+
 if __name__ == "__main__":
   main()
