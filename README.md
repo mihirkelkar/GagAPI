@@ -1,4 +1,4 @@
-Unofficial 9GAG Top Ten API
+Unofficial 9GAG API
 ================
 <center><img src = "http://upload.wikimedia.org/wikipedia/fr/2/28/9gag_new_logo.png" height = "200" width = "200" /></center>
 </br>
