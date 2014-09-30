@@ -39,4 +39,19 @@ Specify the following as attributes to get more filtered, pivoted data:
   </tr>
 </table>
 
-All filtering criteria can be used in a single function call
+All filtering criteria can be used in a single function call.
+
+A typical output would look like this:
+{
+
+  "votes": 12591,
+
+  "title": "I'm spending holidays in Germany - it was a hard lesson..",
+
+  "comments": 547, "post_url": "http://9gag.com/gag/awbQRAB",
+  
+  "type": "Image",
+  
+  "media_url" :   "http://img-9gag-lol.9cache.com/photo/awbQRAB_460s.jpg"
+
+}
