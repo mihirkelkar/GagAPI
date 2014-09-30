@@ -21,4 +21,8 @@ Specify the following as attributes to get more filtered, pivoted data:
     <td>100 scrolls for the hot page</td>
     <td> get_posts_from_page(number_of_pages = 100)
   </tr>
+  <tr>
+    <td>100 scrolls for the hot page<br>Only gifs</td>
+    <td> get_posts_from_page(number_of_pages = 100, media_type = 'gif')
+  </tr>
 </table>
