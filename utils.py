@@ -19,7 +19,8 @@ PAGE_DICT = {
   'cosplay': '/cosplay',
   'timely': '/timely',
   'wtf' : '/wtf',
-  'girl': '/girl' 
+  'girl': '/girl',
+  'fresh' : '/fresh' 
   }
 def get_page(page_url = ""):
   try:
@@ -91,9 +92,3 @@ def get_posts_from_page(number_of_pages = 1, media_type = 'all', page_type = Non
   if more_comments_than > 0:
     data = [el for el in data if el['comments'] > more_comments_than]
   return json.dumps(data)
-
-def main():
-  print get_posts_from_page(media_type = 'gif')
-
-if __name__ == "__main__":
-  main()
